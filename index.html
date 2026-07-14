@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smile Care Dental Clinic — Trusted Family Dentistry</title>
+<meta name="description" content="Smile Care Dental Clinic — professional, gentle dental care for the whole family. Book your appointment online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b3d5c;
+    --blue:#1673b8;
+    --blue-deep:#0d5a94;
+    --sky:#eaf4fb;
+    --sky-2:#d7ecfa;
+    --white:#ffffff;
+    --ink:#132537;
+    --muted:#5b7186;
+    --line:#e3edf5;
+    --whatsapp:#25D366;
+    --gold:#f5a623;
+    --shadow: 0 20px 45px -22px rgba(11,61,92,0.28);
+    --radius:12px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--white);color:var(--ink);
+    font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Poppins',sans-serif;color:var(--navy);margin:0;letter-spacing:-0.3px;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;margin:0;padding:0;}
+  img{max-width:100%;display:block;}
+  button{font-family:inherit;cursor:pointer;}
+  section{padding:100px 8vw;}
+  .inner{max-width:1200px;margin:0 auto;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Poppins',sans-serif;font-weight:600;font-size:0.78rem;
+    letter-spacing:1.6px;text-transform:uppercase;color:var(--blue);
+    background:var(--sky);padding:7px 16px;border-radius:30px;margin-bottom:18px;
+  }
+  .sec-head{max-width:640px;margin:0 auto 56px;text-align:center;}
+  .sec-head h2{font-size:clamp(1.9rem,3.2vw,2.5rem);font-weight:700;}
+  .sec-head p{color:var(--muted);margin-top:14px;font-size:1.02rem;}
+  .smile-divider{
+    width:70px;height:14px;margin:20px auto 0;
+  }
+  .smile-divider svg{width:100%;height:100%;}
+
+  /* -------- reveal animation -------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal:nth-child(2){transition-delay:.08s;}
+  .reveal:nth-child(3){transition-delay:.16s;}
+  .reveal:nth-child(4){transition-delay:.24s;}
+  .reveal:nth-child(5){transition-delay:.32s;}
+  .reveal:nth-child(6){transition-delay:.4s;}
+
+  /* -------- NAV -------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 6vw;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);transition:box-shadow .3s;
+  }
+  nav.scrolled{box-shadow:0 6px 24px -12px rgba(11,61,92,0.18);}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:1.28rem;color:var(--navy);}
+  .logo .mark{
+    width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--navy));
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;
+  }
+  .nav-links{display:flex;gap:32px;font-size:0.92rem;font-weight:500;}
+  .nav-links a{position:relative;color:var(--ink);padding-bottom:5px;transition:color .25s;}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--blue);border-radius:2px;transition:width .3s ease;}
+  .nav-links a:hover{color:var(--blue);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-actions{display:flex;align-items:center;gap:14px;}
+  .btn-call-nav{
+    display:flex;align-items:center;gap:8px;font-size:0.85rem;font-weight:600;color:var(--navy);
+    border:1.5px solid var(--line);padding:9px 16px;border-radius:30px;transition:border-color .25s, color .25s;
+  }
+  .btn-call-nav:hover{border-color:var(--blue);color:var(--blue);}
+  .btn-book-nav{
+    background:var(--blue);color:#fff;padding:11px 22px;border-radius:30px;font-size:0.85rem;font-weight:600;
+    box-shadow:0 10px 24px -10px rgba(22,115,184,0.6);transition:transform .3s ease, background .3s ease;
+  }
+  .btn-book-nav:hover{transform:translateY(-2px);background:var(--blue-deep);}
+  .burger{display:none;font-size:1.6rem;color:var(--navy);}
+
+  /* -------- HERO -------- */
+  .hero{
+    padding:170px 8vw 90px;
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:50px;align-items:center;
+    background:
+      radial-gradient(circle at 88% 10%, rgba(22,115,184,0.10), transparent 45%),
+      radial-gradient(circle at 5% 95%, rgba(22,115,184,0.08), transparent 40%);
+  }
+  .hero h1{font-size:clamp(2.3rem,4vw,3.4rem);line-height:1.16;font-weight:800;}
+  .hero h1 span{color:var(--blue);}
+  .hero p.lead{color:var(--muted);font-size:1.05rem;max-width:480px;margin:22px 0 32px;}
+  .btn-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--blue);color:#fff;padding:16px 30px;border-radius:8px;font-weight:600;font-size:0.95rem;
+    box-shadow:0 16px 34px -14px rgba(22,115,184,0.55);border:1px solid var(--blue);
+    transition:transform .3s ease, background .3s ease;display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn-primary:hover{transform:translateY(-3px);background:var(--blue-deep);}
+  .btn-ghost{
+    padding:16px 26px;border-radius:8px;font-weight:600;font-size:0.95rem;border:1.5px solid var(--line);
+    color:var(--navy);transition:all .3s ease;display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn-ghost:hover{border-color:var(--blue);color:var(--blue);}
+  .hero-trust{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap;}
+  .hero-trust .item b{display:block;font-family:'Poppins',sans-serif;color:var(--navy);font-size:1.5rem;font-weight:700;}
+  .hero-trust .item span{color:var(--muted);font-size:0.82rem;}
+
+  .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;}
+  .hero-card{
+    width:100%;max-width:420px;aspect-ratio:4/5;border-radius:24px;
+    background:linear-gradient(160deg,var(--sky),var(--sky-2));
+    display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .hero-card svg{width:62%;}
+  .float-chip{
+    position:absolute;background:#fff;border:1px solid var(--line);padding:14px 18px;border-radius:12px;
+    box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;font-size:0.85rem;font-weight:600;color:var(--navy);
+    animation:floaty 4.5s ease-in-out infinite;
+  }
+  .chip-a{top:6%;left:-8%;animation-delay:0s;}
+  .chip-b{bottom:10%;right:-6%;animation-delay:1.2s;}
+  @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+  /* -------- WHY / ABOUT -------- */
+  .about{background:var(--sky);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .about-visual{
+    border-radius:20px;overflow:hidden;aspect-ratio:1/1;
+    background:linear-gradient(135deg,var(--blue),var(--navy));
+    display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:var(--shadow);
+  }
+  .about-visual svg{width:55%;}
+  .about-copy p{color:var(--muted);margin-bottom:26px;font-size:1rem;}
+  .why-list{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .why-item{
+    background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;
+    display:flex;gap:12px;align-items:flex-start;transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .why-item:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+  .why-item .ic{
+    width:36px;height:36px;flex:none;border-radius:8px;background:var(--sky);color:var(--blue);
+    display:flex;align-items:center;justify-content:center;font-size:1.05rem;
+  }
+  .why-item b{display:block;font-size:0.92rem;color:var(--navy);margin-bottom:3px;}
+  .why-item span{font-size:0.82rem;color:var(--muted);}
+
+  /* -------- DOCTORS -------- */
+  .doctor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  .doc-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    transition:transform .35s ease, box-shadow .35s ease, border-color .35s;
+  }
+  .doc-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:var(--sky-2);}
+  .doc-photo{
+    aspect-ratio:4/3.4;display:flex;align-items:center;justify-content:center;
+    font-family:'Poppins',sans-serif;font-weight:700;font-size:2.2rem;color:#fff;
+  }
+  .doc-photo.d1{background:linear-gradient(135deg,#1673b8,#0b3d5c);}
+  .doc-photo.d2{background:linear-gradient(135deg,#4fa8e0,#1673b8);}
+  .doc-photo.d3{background:linear-gradient(135deg,#0d5a94,#4fa8e0);}
+  .doc-photo.d4{background:linear-gradient(135deg,#0b3d5c,#1673b8);}
+  .doc-body{padding:20px 22px 24px;}
+  .doc-body h3{font-size:1.08rem;margin-bottom:4px;}
+  .doc-role{color:var(--blue);font-size:0.82rem;font-weight:600;margin-bottom:10px;display:block;}
+  .doc-body p{font-size:0.85rem;color:var(--muted);margin:0 0 12px;}
+  .doc-tags{display:flex;gap:8px;flex-wrap:wrap;}
+  .doc-tags span{background:var(--sky);color:var(--blue);font-size:0.72rem;font-weight:600;padding:4px 10px;border-radius:20px;}
+
+  /* -------- TREATMENTS -------- */
+  .treat{background:var(--sky);}
+  .treat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .treat-card{
+    background:#fff;border-radius:var(--radius);padding:30px 26px;border:1px solid var(--line);
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .treat-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);}
+  .treat-icon{
+    width:52px;height:52px;border-radius:12px;background:var(--sky);color:var(--blue);
+    display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px;
+  }
+  .treat-card h3{font-size:1.05rem;margin-bottom:10px;}
+  .treat-card p{font-size:0.86rem;color:var(--muted);margin:0 0 14px;line-height:1.6;}
+  .treat-card .price{font-family:'Poppins',sans-serif;font-weight:700;color:var(--navy);font-size:0.95rem;}
+  .treat-card .price small{color:var(--muted);font-weight:400;font-size:0.75rem;}
+
+  /* -------- EMERGENCY BANNER -------- */
+  .emergency{
+    background:linear-gradient(120deg,var(--navy),var(--blue-deep));
+    border-radius:20px;padding:50px 6vw;color:#fff;
+    display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;
+  }
+  .emergency .txt h2{color:#fff;font-size:1.7rem;margin-bottom:10px;}
+  .emergency .txt p{color:#cfe3f2;font-size:0.95rem;max-width:480px;}
+  .emergency .pulse-dot{
+    display:inline-block;width:9px;height:9px;border-radius:50%;background:#ff5b5b;margin-right:8px;
+    box-shadow:0 0 0 rgba(255,91,91,0.6);animation:pulse 1.8s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(255,91,91,0.6);}
+    70%{box-shadow:0 0 0 12px rgba(255,91,91,0);}
+    100%{box-shadow:0 0 0 0 rgba(255,91,91,0);}
+  }
+  .emergency .cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-white{
+    background:#fff;color:var(--navy);padding:15px 28px;border-radius:8px;font-weight:700;font-size:0.92rem;
+    display:inline-flex;align-items:center;gap:10px;transition:transform .3s ease;
+  }
+  .btn-white:hover{transform:translateY(-3px);}
+  .btn-outline-white{
+    border:1.5px solid rgba(255,255,255,0.55);color:#fff;padding:15px 26px;border-radius:8px;font-weight:600;font-size:0.92rem;
+    display:inline-flex;align-items:center;gap:10px;transition:all .3s ease;
+  }
+  .btn-outline-white:hover{background:rgba(255,255,255,0.12);}
+
+  /* -------- BOOK APPOINTMENT -------- */
+  .book-wrap{
+    display:grid;grid-template-columns:0.85fr 1.15fr;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);
+  }
+  .book-info{background:linear-gradient(160deg,var(--navy),var(--blue-deep));color:#fff;padding:54px 44px;}
+  .book-info h2{color:#fff;font-size:1.9rem;margin-bottom:16px;}
+  .book-info p{color:#cfe3f2;font-size:0.92rem;line-height:1.7;margin-bottom:30px;}
+  .book-info .timing-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.15);font-size:0.86rem;}
+  .book-info .timing-row b{font-weight:600;}
+  .book-form{background:#fff;padding:50px 44px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  .field{display:flex;flex-direction:column;gap:7px;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:0.75rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:0.6px;}
+  .field input,.field select,.field textarea{
+    border:1.5px solid var(--line);background:var(--sky);padding:12px 14px;border-radius:8px;
+    font-family:'Inter',sans-serif;font-size:0.92rem;color:var(--ink);outline:none;transition:border-color .25s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);background:#fff;}
+  .book-form button{
+    width:100%;margin-top:8px;padding:15px;background:var(--blue);color:#fff;border:none;border-radius:8px;
+    font-weight:700;font-size:0.92rem;transition:background .3s;
+  }
+  .book-form button:hover{background:var(--blue-deep);}
+  .confirm-msg{display:none;margin-top:16px;padding:14px 16px;background:var(--sky);border:1px solid var(--blue);color:var(--navy);font-size:0.85rem;border-radius:8px;font-weight:500;}
+
+  /* -------- REVIEWS -------- */
+  .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .review-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;transition:transform .3s ease, box-shadow .3s ease;}
+  .review-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+  .review-card .stars{color:var(--gold);letter-spacing:2px;margin-bottom:14px;}
+  .review-card p{font-size:0.94rem;color:var(--ink);margin:0 0 20px;line-height:1.65;}
+  .reviewer{display:flex;align-items:center;gap:12px;}
+  .reviewer .av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--navy));display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.85rem;font-family:'Poppins',sans-serif;font-weight:600;}
+  .reviewer b{display:block;font-size:0.88rem;}
+  .reviewer span{font-size:0.75rem;color:var(--muted);}
+
+  /* -------- FAQ -------- */
+  .faq{background:var(--sky);}
+  .faq-list{max-width:800px;margin:0 auto;}
+  .faq-item{background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:14px;overflow:hidden;}
+  .faq-q{
+    display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;
+    font-weight:600;color:var(--navy);font-size:0.96rem;
+  }
+  .faq-q .plus{transition:transform .3s ease;color:var(--blue);font-size:1.3rem;font-weight:400;}
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease, padding .35s ease;padding:0 24px;color:var(--muted);font-size:0.9rem;line-height:1.7;}
+  .faq-item.open .faq-a{max-height:200px;padding:0 24px 22px;}
+
+  /* -------- CONTACT -------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start;}
+  .contact-list li{display:flex;gap:16px;margin-bottom:24px;align-items:flex-start;}
+  .contact-list .ic{width:42px;height:42px;flex:none;border-radius:10px;background:var(--sky);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+  .contact-list b{display:block;margin-bottom:3px;color:var(--navy);}
+  .contact-list span{color:var(--muted);font-size:0.9rem;line-height:1.6;}
+  .map-frame{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);height:100%;min-height:320px;}
+  .map-frame iframe{width:100%;height:100%;min-height:320px;border:0;display:block;}
+
+  footer{background:var(--navy);color:#cfe3f2;padding:56px 8vw 28px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px;}
+  .foot-logo{display:flex;align-items:center;gap:10px;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:14px;}
+  .foot-logo .mark{width:34px;height:34px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:1rem;}
+  footer p{font-size:0.86rem;color:#a9c2d6;line-height:1.7;}
+  footer h4{color:#fff;font-size:0.92rem;margin-bottom:16px;}
+  footer ul li{margin-bottom:10px;}
+  footer ul li a{font-size:0.86rem;color:#a9c2d6;transition:color .25s;}
+  footer ul li a:hover{color:#fff;}
+  .copyright{border-top:1px solid rgba(255,255,255,0.12);padding-top:22px;text-align:center;font-size:0.78rem;color:#89a5bc;}
+
+  /* -------- FLOATING BUTTONS -------- */
+  .floating{position:fixed;right:24px;bottom:24px;display:flex;flex-direction:column;gap:14px;z-index:300;}
+  .fbtn{
+    width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:1.5rem;box-shadow:0 12px 28px -10px rgba(0,0,0,0.35);transition:transform .3s ease;
+  }
+  .fbtn:hover{transform:scale(1.08);}
+  .fbtn.wa{background:var(--whatsapp);}
+  .fbtn.call{background:var(--blue);animation:ringpulse 2.2s infinite;}
+  @keyframes ringpulse{
+    0%{box-shadow:0 0 0 0 rgba(22,115,184,0.55);}
+    70%{box-shadow:0 0 0 14px rgba(22,115,184,0);}
+    100%{box-shadow:0 0 0 0 rgba(22,115,184,0);}
+  }
+
+  @media (max-width:1080px){
+    .doctor-grid,.treat-grid{grid-template-columns:repeat(2,1fr);}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;padding-top:150px;}
+    .about-grid,.contact-grid{grid-template-columns:1fr;}
+    .book-wrap{grid-template-columns:1fr;}
+    .review-grid{grid-template-columns:1fr;}
+    .why-list{grid-template-columns:1fr;}
+    .nav-links,.nav-actions{display:none;}
+    .burger{display:block;}
+    .emergency{flex-direction:column;align-items:flex-start;}
+  }
+  @media (max-width:600px){
+    section{padding:70px 6vw;}
+    .doctor-grid,.treat-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="logo"><span class="mark">＋</span>Smile Care Dental</div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#doctors">Doctors</a></li>
+    <li><a href="#treatments">Treatments</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="tel:+919876543210" class="btn-call-nav">📞 +91 98765 43210</a>
+    <a href="#book" class="btn-book-nav">Book Appointment</a>
+  </div>
+  <div class="burger" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">☰</div>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="hero">
+  <div>
+    <span class="eyebrow">✦ Trusted by 15,000+ Families</span>
+    <h1>Gentle, Modern Dental Care for <span>Your Whole Family</span></h1>
+    <p class="lead">From your child's first checkup to your parents' dental implants — Smile Care Dental Clinic brings advanced, pain-free dentistry with a warm, family-first approach.</p>
+    <div class="btn-row">
+      <a href="#book" class="btn-primary">📅 Book Appointment</a>
+      <a href="tel:+919876543210" class="btn-ghost">📞 Call Now</a>
+    </div>
+    <div class="hero-trust">
+      <div class="item"><b>15+ Yrs</b><span>Clinical Experience</span></div>
+      <div class="item"><b>15,000+</b><span>Happy Patients</span></div>
+      <div class="item"><b>4.9 ★</b><span>Google Rating</span></div>
+      <div class="item"><b>24/7</b><span>Emergency Care</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#ffffff" d="M100 20c-16 0-24 10-34 10S46 22 34 22C18 22 8 40 8 62c0 30 10 58 18 78 5 12 10 22 20 22 9 0 11-14 14-26 3-11 6-18 12-18h4c6 0 9 7 12 18 3 12 5 26 14 26 10 0 15-10 20-22 8-20 18-48 18-78 0-22-10-40-26-40-12 0-18 10-28 10s-14-10-16-10z"/>
+      </svg>
+    </div>
+    <div class="float-chip chip-a">✅ Painless Treatment</div>
+    <div class="float-chip chip-b">🦷 Digital X-Ray Onsite</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="inner about-grid">
+    <div class="about-visual reveal">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="86" fill="rgba(255,255,255,0.12)"/>
+        <path fill="#fff" d="M100 30c-14 0-21 9-30 9s-16-9-27-9c-14 0-23 16-23 36 0 27 9 52 16 70 4 11 9 20 18 20 8 0 10-13 13-24 3-10 5-16 11-16h4c6 0 8 6 11 16 3 11 5 24 13 24 9 0 14-9 18-20 7-18 16-43 16-70 0-20-9-36-23-36-11 0-16 9-26 9s-13-9-11-9z"/>
+      </svg>
+    </div>
+    <div class="about-copy reveal">
+      <span class="eyebrow">About Our Clinic</span>
+      <h2>15 Years of Building Healthier, Happier Smiles</h2>
+      <p>Smile Care Dental Clinic was founded with one goal: to make world-class dental care accessible, comfortable, and stress-free for every Indian family. Our sterilized, modern facility combines advanced technology with a genuinely caring team — so your visit feels less like a clinic and more like coming home.</p>
+      <div class="why-list">
+        <div class="why-item"><div class="ic">🛡️</div><div><b>Hygiene First</b><span>Hospital-grade sterilization for every patient</span></div></div>
+        <div class="why-item"><div class="ic">👨‍👩‍👧‍👦</div><div><b>Family Friendly</b><span>Gentle care for kids to grandparents</span></div></div>
+        <div class="why-item"><div class="ic">💳</div><div><b>Easy Payments</b><span>Cashless insurance &amp; EMI options</span></div></div>
+        <div class="why-item"><div class="ic">⚡</div><div><b>Same-Day Slots</b><span>Emergency &amp; urgent visits accommodated</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section id="doctors">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Meet Our Team</span>
+      <h2>Experienced &amp; Caring Doctors</h2>
+      <p>Every doctor at Smile Care is trained in the latest techniques and committed to painless, precise treatment.</p>
+    </div>
+    <div class="doctor-grid">
+      <div class="doc-card reveal">
+        <div class="doc-photo d1">DR</div>
+        <div class="doc-body">
+          <h3>Dr. Ramesh Iyer</h3>
+          <span class="doc-role">Chief Dentist &amp; Founder</span>
+          <p>BDS, MDS (Prosthodontics) — 18 years experience in implants &amp; smile design.</p>
+          <div class="doc-tags"><span>Implants</span><span>Cosmetic</span></div>
+        </div>
+      </div>
+      <div class="doc-card reveal">
+        <div class="doc-photo d2">AK</div>
+        <div class="doc-body">
+          <h3>Dr. Anjali Krishnan</h3>
+          <span class="doc-role">Orthodontist</span>
+          <p>BDS, MDS (Orthodontics) — Specialist in braces &amp; clear aligners for all ages.</p>
+          <div class="doc-tags"><span>Braces</span><span>Aligners</span></div>
+        </div>
+      </div>
+      <div class="doc-card reveal">
+        <div class="doc-photo d3">SN</div>
+        <div class="doc-body">
+          <h3>Dr. Suresh Nair</h3>
+          <span class="doc-role">Root Canal Specialist</span>
+          <p>BDS, MDS (Endodontics) — Expert in single-sitting, pain-free root canals.</p>
+          <div class="doc-tags"><span>RCT</span><span>Emergency</span></div>
+        </div>
+      </div>
+      <div class="doc-card reveal">
+        <div class="doc-photo d4">PM</div>
+        <div class="doc-body">
+          <h3>Dr. Priya Menon</h3>
+          <span class="doc-role">Pediatric Dentist</span>
+          <p>BDS, MDS (Pedodontics) — Making dental visits fun and fear-free for kids.</p>
+          <div class="doc-tags"><span>Kids</span><span>Preventive</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TREATMENTS -->
+<section id="treatments" class="treat">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Our Services</span>
+      <h2>Comprehensive Dental Treatments</h2>
+      <p>Modern equipment, transparent pricing, and treatments tailored to every member of your family.</p>
+    </div>
+    <div class="treat-grid">
+      <div class="treat-card reveal"><div class="treat-icon">🦷</div><h3>General Dentistry</h3><p>Checkups, cleaning, fillings &amp; oral hygiene guidance.</p><div class="price">From ₹500 <small>/ visit</small></div></div>
+      <div class="treat-card reveal"><div class="treat-icon">🩹</div><h3>Root Canal Treatment</h3><p>Painless, single-sitting RCT with rotary technology.</p><div class="price">From ₹3,500 <small>/ tooth</small></div></div>
+      <div class="treat-card reveal"><div class="treat-icon">😁</div><h3>Braces &amp; Aligners</h3><p>Metal, ceramic &amp; invisible aligners for all ages.</p><div class="price">From ₹25,000 <small>/ course</small></div></div>
+      <div class="treat-card reveal"><div class="treat-icon">🔩</div><h3>Dental Implants</h3><p>Permanent, natural-looking tooth replacement.</p><div class="price">From ₹18,000 <small>/ implant</small></div></div>
+      <div class="treat-card reveal"><div class="treat-icon">✨</div><h3>Teeth Whitening</h3><p>Safe in-clinic &amp; take-home whitening kits.</p><div class="price">From ₹4,000 <small>/ session</small></div></div>
+      <div class="treat-card reveal"><div class="treat-icon">🧒</div><h3>Pediatric Dentistry</h3><p>Gentle, playful dental care for children.</p><div class="price">From ₹400 <small>/ visit</small></div></div>
+      <div class="treat-card reveal"><div class="treat-icon">👑</div><h3>Crowns &amp; Bridges</h3><p>Durable ceramic &amp; zirconia restorations.</p><div class="price">From ₹5,500 <small>/ unit</small></div></div>
+      <div class="treat-card reveal"><div class="treat-icon">🚨</div><h3>Emergency Dental Care</h3><p>Same-day relief for pain, trauma &amp; swelling.</p><div class="price">Available 24/7</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY -->
+<section>
+  <div class="inner">
+    <div class="emergency reveal">
+      <div class="txt">
+        <span style="color:#fff;"><span class="pulse-dot"></span>24/7 Emergency Dental Care</span>
+        <h2>In Pain? We'll See You Today.</h2>
+        <p>Toothache, broken tooth, or swelling — our emergency line connects you directly to a dentist, any day of the week.</p>
+      </div>
+      <div class="cta">
+        <a href="tel:+919876543210" class="btn-white">📞 Call Emergency Line</a>
+        <a href="https://wa.me/919876543210" target="_blank" class="btn-outline-white">💬 WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK APPOINTMENT -->
+<section id="book">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Book Online</span>
+      <h2>Schedule Your Visit</h2>
+      <p>Pick a convenient slot and our front desk will confirm your appointment by phone or WhatsApp.</p>
+    </div>
+    <div class="book-wrap reveal">
+      <div class="book-info">
+        <h2>Clinic Timings</h2>
+        <p>We're open 6 days a week, with extended hours for working professionals and same-day emergency slots.</p>
+        <div class="timing-row"><span>Monday – Saturday</span><b>9:00 AM – 8:00 PM</b></div>
+        <div class="timing-row"><span>Sunday</span><b>10:00 AM – 2:00 PM</b></div>
+        <div class="timing-row"><span>Emergency Care</span><b>24/7</b></div>
+        <div class="timing-row" style="border-bottom:none;"><span>Location</span><b>Ponneri, Tamil Nadu</b></div>
+      </div>
+      <div class="book-form">
+        <form id="bookingForm">
+          <div class="form-row">
+            <div class="field"><label>Full Name</label><input type="text" required placeholder="Patient's name"></div>
+            <div class="field"><label>Phone Number</label><input type="tel" required placeholder="+91"></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+            <div class="field"><label>Treatment</label>
+              <select required>
+                <option value="">Select treatment</option>
+                <option>General Checkup</option>
+                <option>Root Canal Treatment</option>
+                <option>Braces &amp; Aligners</option>
+                <option>Dental Implants</option>
+                <option>Teeth Whitening</option>
+                <option>Pediatric Dentistry</option>
+                <option>Emergency Care</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Preferred Date</label><input type="date" required></div>
+            <div class="field"><label>Preferred Time</label><input type="time" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field full"><label>Notes (optional)</label><textarea rows="2" placeholder="Describe your concern"></textarea></div>
+          </div>
+          <button type="submit">Confirm Appointment</button>
+          <div class="confirm-msg" id="confirmMsg">✅ Thank you! Your appointment request has been received. Our team will confirm shortly via call or WhatsApp.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section>
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Patient Stories</span>
+      <h2>What Our Patients Say</h2>
+    </div>
+    <div class="review-grid">
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Got my root canal done painlessly in a single sitting. Dr. Suresh explained every step — highly recommend for anyone anxious about dental work."</p>
+        <div class="reviewer"><div class="av">R</div><div><b>Rajesh Kumar</b><span>Root Canal Patient</span></div></div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"My 6-year-old actually looks forward to her dental visits now! Dr. Priya is so gentle and patient with kids."</p>
+        <div class="reviewer"><div class="av">S</div><div><b>Sangeetha V.</b><span>Parent</span></div></div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Got braces for both my kids here. Transparent pricing, no hidden costs, and excellent follow-up care throughout."</p>
+        <div class="reviewer"><div class="av">M</div><div><b>Muthu Selvam</b><span>Orthodontic Patient</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Do you accept health insurance? <span class="plus">+</span></div>
+        <div class="faq-a">Yes, we accept cashless treatment under most major insurance providers, and also offer EMI options for larger treatments like implants and braces.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is teeth whitening safe for enamel? <span class="plus">+</span></div>
+        <div class="faq-a">Our whitening treatments use dentist-supervised, enamel-safe formulations. We assess your oral health first to ensure whitening is right for you.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you treat young children? <span class="plus">+</span></div>
+        <div class="faq-a">Absolutely — Dr. Priya Menon specializes in pediatric dentistry, using a gentle, play-based approach to keep kids comfortable.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What should I do in a dental emergency? <span class="plus">+</span></div>
+        <div class="faq-a">Call our 24/7 emergency line immediately. For a knocked-out tooth, keep it moist (in milk or saline) and reach us within 30 minutes for the best chance of saving it.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How often should I visit for a checkup? <span class="plus">+</span></div>
+        <div class="faq-a">We recommend a routine checkup and cleaning every 6 months for adults and children to catch issues early and maintain oral health.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Visit Us</span>
+      <h2>Contact &amp; Location</h2>
+    </div>
+    <div class="contact-grid">
+      <ul class="contact-list reveal">
+        <li><div class="ic">📍</div><div><b>Clinic Address</b><span>Smile Care Dental Clinic, Main Road, Ponneri, Tamil Nadu</span></div></li>
+        <li><div class="ic">📞</div><div><b>Phone</b><span>+91 98765 43210</span></div></li>
+        <li><div class="ic">💬</div><div><b>WhatsApp Consultation</b><span>+91 98765 43210 — chat with our front desk</span></div></li>
+        <li><div class="ic">✉️</div><div><b>Email</b><span>hello@smilecaredental.in</span></div></li>
+        <li><div class="ic">🕐</div><div><b>Timings</b><span>Mon–Sat: 9 AM – 8 PM · Sun: 10 AM – 2 PM · Emergency: 24/7</span></div></li>
+      </ul>
+      <div class="map-frame reveal">
+        <iframe src="https://maps.google.com/maps?q=Ponneri%2C%20Tamil%20Nadu&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Clinic location map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><span class="mark">＋</span>Smile Care Dental</div>
+        <p>Trusted, modern dental care for Indian families — combining advanced technology with a gentle, personal touch.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#doctors">Our Doctors</a></li>
+          <li><a href="#treatments">Treatments</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Treatments</h4>
+        <ul>
+          <li><a href="#treatments">Root Canal</a></li>
+          <li><a href="#treatments">Braces &amp; Aligners</a></li>
+          <li><a href="#treatments">Dental Implants</a></li>
+          <li><a href="#treatments">Teeth Whitening</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+          <li><a href="https://wa.me/919876543210">WhatsApp Us</a></li>
+          <li><a href="#contact">Ponneri, Tamil Nadu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© 2026 Smile Care Dental Clinic. All rights reserved.</div>
+  </div>
+</footer>
+
+<div class="floating">
+  <a href="https://wa.me/919876543210" target="_blank" class="fbtn wa" title="WhatsApp Consultation">💬</a>
+  <a href="tel:+919876543210" class="fbtn call" title="Call Now">📞</a>
+</div>
+
+<script>
+  // scroll shadow on nav
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // fade-in on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+
+  // booking form
+  document.getElementById('bookingForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('confirmMsg').style.display = 'block';
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
